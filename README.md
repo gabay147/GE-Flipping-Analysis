@@ -2,7 +2,7 @@
 
 by Felix Gabay
 
-[github.com/gabay147/GE-Flipping-Analysis](GE-Flipping-Analysis) is a data 
+[GE-Flipping-Analysis](github.com/gabay147/GE-Flipping-Analysis) is a data 
 analysis project exploring daily GE prices from 2021 to 2026 that intends to 
 inform users on ideal flipping strategies on the Grand Exchange in the popular 
 MMORPG Old School Runescape.
@@ -28,9 +28,9 @@ simply speculative. I have a lot of ideas and time will tell where this goes.
 
 ## Data Provenance
 
-The data set used in this project is the [https://www.kaggle.com/datasets/felixgabay/osrs-ge-prices-snapshot-june-27-2026](OSRS GE Snapshot).
-I used the [https://oldschool.runescape.wiki/w/RuneScape:Real-time_Prices](OSRS Wiki Pricing API) to build this dataset. 
-Code related to building this dataset can be found at the [https://github.com/gabay147/GE-Data-Collector](GE-Data-Collector repository).
+The data set used in this project is the [OSRS GE Snapshot](https://www.kaggle.com/datasets/felixgabay/osrs-ge-prices-snapshot-june-27-2026).
+I used the [OSRS Wiki Pricing API](https://oldschool.runescape.wiki/w/RuneScape:Real-time_Prices) to build this dataset. 
+Code related to building this dataset can be found at the [GE-Data-Collector](https://github.com/gabay147/GE-Data-Collector).
 
 ## Roadmap
 
