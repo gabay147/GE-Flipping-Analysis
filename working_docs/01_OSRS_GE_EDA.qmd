@@ -4,13 +4,22 @@ author: "Felix Gabay"
 format: html
 ---
 
-# Arrival
+# Problem Statement
 
-Man, I never know how to start off with these projects.
+Players in the popular MMORPG Old School Runescape often flip commodities on the
+game's auction house (the Grand Exchange, or 'GE') for profit.
 
-I don't know what to say, how to structure it, what to do with my hands...
+The age-old advice for newcomers to the flipping market is short and simple.
 
-Anyway, here's Wonderwall.
+Buy low, sell high. 
+
+Current strategies for flipping on the GE are mostly heuristic, relying on 
+experimentation and data collection until a player finds their rhythm and 
+preferred commodities. I have personally explored flipping to some degree, yet
+never found enough interest (nor profit) to continue my endeavors. I can't help
+but wonder, **does there exist a theoretical best portfolio in terms of profit
+margin and sale volume?**
+
 
 ## Sierra 117
 
@@ -31,5 +40,6 @@ for(pkg in packages) {
 GE_snapshot_2026_06_27 <- read_csv("../data/GE_snapshot_2026-06-27.csv")
 head(GE_snapshot_2026_06_27)
 ```
+
 
 
