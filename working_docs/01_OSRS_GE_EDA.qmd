@@ -1,0 +1,35 @@
+---
+title: "01_OSRS_GE_EDA"
+author: "Felix Gabay"
+format: html
+---
+
+# Arrival
+
+Man, I never know how to start off with these projects.
+
+I don't know what to say, how to structure it, what to do with my hands...
+
+Anyway, here's Wonderwall.
+
+## Sierra 117
+
+Let's start by loading up some packages and the dataset I'll be using.
+
+```{r}
+# Packages
+packages <- ("tidyverse")
+
+for(pkg in packages) {
+  if(!requireNamespace(pkg, quietly = TRUE)) install.packages(pkg)
+  library(pkg, character.only = TRUE)
+}
+```
+
+```{r}
+# Data
+GE_snapshot_2026_06_27 <- read_csv("../data/GE_snapshot_2026-06-27.csv")
+head(GE_snapshot_2026_06_27)
+```
+
+
