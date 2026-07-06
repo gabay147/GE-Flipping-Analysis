@@ -40,15 +40,45 @@ for(pkg in packages) {
 ### Understand the problem and data
 
 - What is the goal or problem we are trying to solve?
+
+I want to find the best portfolio of commodities to flip on Old School Runescape
+to maximize profit.
+
 - What variables are present in the dataset and what do they represent?
+
+  - limit: 4-hour buy limit - a trade restriction that will influence a good's value over time
+  - timestamp: timestamp of transaction snapshot - will show trade trends over time
+  - avgHighPrice and avgLowPrice: averaged trade values within 24hr period - will show our trade margins per items
+  - highPriceVolume and lowPriceVolume: averaged trade volumes within 24hr period - will show commodity supply and demand
+  - members: whether the item is restricted to members accounts or free accounts
+  - lowalch and highalch: the value the item returns when consumed by alchemy spells
+
 - What types of data are available?
+
+  - continuous integer
+  - Date
+  - boolean
+
 - Are there any data quality issues or limitations?
+
+  - Data scraped contains two classifications of items:
+    - commodities (raw materials, crafting supplies)
+    - manufactured goods (crafted materials, loot, consumables)
+    - Some items can be traded as both, especially consumables, weapons and armor
+    
+  - Some items have such low trade volume that their historic data goes back to 
+  2021 and do not follow the same record trends as other items
 
 ### Import and inspect the data
 
 - Load the dataset
 - Check numbers of rows and columns
+  - 14 col x 1,550,485 row
+
 - ID missing values
+  - Seems to not have missings values
+  - However, contains missing *time spans*
+
 - Verify data types
 - Look for errors, invalid values, or unusual data points
 
@@ -57,6 +87,11 @@ for(pkg in packages) {
 GE_snapshot_2026_06_27 <- read_csv("../data/GE_snapshot_2026-06-27.csv")
 head(GE_snapshot_2026_06_27)
 ```
+```{r}
+df_dict <- autodict::generate_meta_data(GE_snapshot_2026_06_27)
+df_dict
+```
+
 
 ```{r}
 # Start with summary function
