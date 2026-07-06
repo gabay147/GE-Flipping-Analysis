@@ -35,11 +35,97 @@ for(pkg in packages) {
 }
 ```
 
+## Exploratory Data Analysis
+
+### Understand the problem and data
+
+- What is the goal or problem we are trying to solve?
+- What variables are present in the dataset and what do they represent?
+- What types of data are available?
+- Are there any data quality issues or limitations?
+
+### Import and inspect the data
+
+- Load the dataset
+- Check numbers of rows and columns
+- ID missing values
+- Verify data types
+- Look for errors, invalid values, or unusual data points
+
 ```{r}
 # Data
 GE_snapshot_2026_06_27 <- read_csv("../data/GE_snapshot_2026-06-27.csv")
 head(GE_snapshot_2026_06_27)
 ```
+
+```{r}
+# Start with summary function
+summary <- GE_snapshot_2026_06_27 |>
+  group_by(item_id, name) |>
+  summarize(
+    'count' = n(),
+    'min_time' = min(timestamp),
+    'max_time' = max(timestamp),
+    'diff_days' = difftime(max(timestamp), min(timestamp), units = "days"),
+    across(
+      .cols = all_of(c(
+        'avgHighPrice',
+        'avgLowPrice',
+        'highPriceVolume',
+        'lowPriceVolume'
+      )),
+      .fns = list(mean = mean, sd = sd),
+      .names = "{fn}_{col}"
+    )
+  )
+
+view(summary)
+```
+
+### Handle missing data
+Why is the data missing?
+- MCAR, MAR, MNAR
+- [Types of missing data: MCAR, MAR, and MNAR explained](https://learndata.xyz/posts/types%20of%20missing%20data%20mcar,%20mar,%20and%20mnar%20explained/)
+- **Understanding this is key to determining the right approach, as it could introduce biases**
+- Remove of fill missing values?
+- Use suitable imputation methods
+
+### Explore data characteristics
+- Check data distribution to understand how values are spread across the dataset
+- Measure central tendency using mean, median and mode to find the typical value of the data
+- Measure variability using standard deviation to see how much the values vary
+- Analyze distribution shape using skewness and kurtosis
+- Identify outliers or anomalies that may affect the analysis
+
+### Perform data transformation
+Prepare the dataset for better analysis and modeling
+- Scaling or normalizing numerical variables
+- Encoding categorical variables (one-hot encoding, label encoding, factoring)
+- Apply mathematical transformations to correct skewness or non-linearity
+- Feature engineering by deriving useful information from existing variables
+- Aggregating or grouping data based on specific variables or conditions
+
+### Visualize data relationships
+- Bar charts and pie charts for analyzing categorical data distribution
+- Histograms, box plots and density plots show distribution and detect outliers in data
+- Scatter plots and correlation measures help analyze relationships between variables
+
+### Handle outliers
+- Identify extreme values with statistical methods like Interquartile Range or Z-score
+- Analyze outliers carefully before taking action
+- Use domain knowledge to determine whether they are valid or erroneous
+- Apply techniques like capping or transformation if necessary
+- Remove outliers only when they are clearly incorrect or harmful to a valid analysis
+
+### Communicate findings and insights
+- State the goal and scope of the analysis
+- Provide background or context so the approach is easy to understand
+- Use visualizations to support findings and make results clearer
+- Highlist key insights, patterns, or challenges faced during the analysis
+- Suggest next steps or areas that require further investigation
+
+
+
 
 
 
